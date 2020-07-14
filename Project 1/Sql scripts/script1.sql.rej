@@ -1,0 +1,30 @@
+diff a/Sql scripts/script1.sql b/Sql scripts/script1.sql	(rejected hunks)
+@@ -8,22 +8,21 @@
+    atype varchar(100) default null,
+    PRIMARY KEY (id)
+ );
+-create table wishlist(
++create table Country(
+ CountryID varchar(20),
+ id Integer,
+ constraint foreign key (id) references account(id)
+ on delete cascade
+ on update no action,
+-constraint foreign key(CountryID) references country(CountryName)
++constraint foreign key(CountryID) references countryinfo(CountryName)
+ on delete cascade
+ on update cascade
+ );
+ 
+-create table Country(
++create table CountryInfo(
+ CountryName varchar(20) primary key
+ );
+ 
+ insert into account (first_name,last_name,address,DateOfBirth) Values('Big','Boy','32 Big Ave','1954-04-10');
+-insert into country values("Austrlalia"),("China"),("USA");
+-insert into wishlist values('Australia',1);
+-Select * from wishlist;
+\ No newline at end of file
++insert into countryInfo values("Austrlalia"),("China"),("USA");
++insert into Country values('USA',1);

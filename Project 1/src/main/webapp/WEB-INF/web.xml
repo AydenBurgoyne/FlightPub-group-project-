@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+   http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+
+    <display-name>My Spring MVC app</display-name>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/SpringDispatcher-servlet.xml</param-value> <!--must be named the same as the file in the WEB-INF-->
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class> <!--allows spring to listen for when requests are created-->
+    </listener>
+    
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
+    <servlet>
+        <servlet-name>SpringDispatcher</servlet-name>       <!--whenever a request comes in spring will try find a controller to handle the request and produce the jsp or some toher response-->
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SpringDispatcher</servlet-name>   <!--mapping the dispatcher to the route so that every request will be routed through spring-->
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+</web-app>

@@ -1,0 +1,48 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/aop
+    https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:component-scan base-package="me.groupFour"/> <!--what package the spring framework should scna for classes (needs to be same as root directory under /java)-->
+
+    <mvc:annotation-driven />   <!--tells spring to find the controller that handle requests-->
+
+    <mvc:view-resolvers>
+        <!--tells spring that we are using jsp views, where to find them and the class that will render the views.-->
+        <mvc:jsp prefix="/WEB-INF/jsp/"
+                 suffix=".jsp"
+                 view-class="org.springframework.web.servlet.view.JstlView" />
+    </mvc:view-resolvers>
+
+    <mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/css/**" location="/css/"/>
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <bean id="EntityManagerCreator" class="me.groupFour.data.EntityManagerCreator"/>
+    <bean class="javax.persistence.EntityManager" scope="request" factory-bean="EntityManagerCreator" factory-method="create" destroy-method="close">
+        <aop:scoped-proxy/>
+    </bean>
+
+
+    <bean class="me.groupFour.dao.AccountEntityDAO"/>
+    <bean class="me.groupFour.dao.TicketEntityDAO"/>
+    <bean class="me.groupFour.dao.ClassEntityDAO"/>
+    <bean class="me.groupFour.dao.FlightEntityDAO"/>
+    <bean class="me.groupFour.dao.DestinationEntityDAO"/>
+    <bean class="me.groupFour.dao.PriceEntityDAO"/>
+    <bean class="me.groupFour.dao.BookingEntityDAO"/>
+    <bean class="me.groupFour.dao.PlaneConfigDAO"/>
+
+
+
+
+</beans>
