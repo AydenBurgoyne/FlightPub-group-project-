@@ -14,8 +14,7 @@ Database- MariaDB(MySQL)
 IDE-Inteliji
 
 Tips for Running:
-The easiest way to run this project is to open the project in Inteliji Ultimate then setup and run a mariaDB environment run the db scripts in the order of:
--
+The easiest way to run this project is to open the project in Inteliji Ultimate then setup and run a mariaDB environment run the db scripts in order e.g 1,2,3 You'll have to input your database details into the META-INT/Context.xml file e.g host address, username and password etc. You may have to make sure the project is using the version of java that's installed on your computer. If you have any issues I'm happy to host the site if you contact me so you can look at it, it's just not practical for me to host it 24/7 however.
 
 Description of the Project:
 The project is to design and implement a new flight agency website. The goal with this is to implement new and interesting features for different potential users of the website.
